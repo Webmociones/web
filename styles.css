@@ -1,0 +1,266 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #f4f4f9;
+    text-align: center;
+    padding: 20px;
+}
+
+.header-image, .section-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+h1, h2, h3 {
+    color: #4a90e2;
+}
+
+p, ul, li {
+    color: #555;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Barra de navegación */
+nav {
+    background-color: #4a90e2;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #357abd;
+}
+
+/* Botón */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #357abd;
+}
+
+/* Formulario de contacto */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+label, input, textarea, button {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #357abd;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilos para la sección de bienvenida en index.html */
+.intro {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.intro h2, .intro h3 {
+    color: #4a90e2;
+}
+
+.intro p, .intro ul {
+    color: #555;
+    line-height: 1.6;
+}
+
+.intro ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.intro ul li::before {
+    content: "✔️ ";
+    color: #4a90e2;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.intro blockquote {
+    font-style: italic;
+    color: #4a90e2;
+    margin-top: 20px;
+}
+
+/* Estilos para la sección de Servicios y Productos en services.html */
+.services {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.services h3, .services h4 {
+    color: #4a90e2;
+    margin-top: 20px;
+}
+
+.services p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.services ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.section-image {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+/* Estilos para la sección de Sobre Nosotros en about.html */
+.about-details {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: left;
+}
+
+.about-details h3 {
+    color: #4a90e2;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.about-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.about-details ul li {
+    margin-bottom: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.about-details ul li strong {
+    color: #4a90e2;
+}
+
+/* Estilos para la sección de Método de Trabajo en method.html */
+.method-details {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: left;
+}
+
+.method-details h3 {
+    color: #4a90e2;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.method-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.method-details ul li {
+    margin-bottom: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.method-details ul li strong {
+    color: #4a90e2;
+}
+
+/* Estilos para la sección de Contacto en contact.html */
+.contact {
+    text-align: center;
+    padding: 20px;
+}
+
+.contact-image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}

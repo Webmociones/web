@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr" data-device="computer">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de las Emociones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        .sidebar {
+            width: 300px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .tip {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #e7f3fe;
+            border-left: 5px solid #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Manejo de las Emociones</h1>
+        <p>El manejo de las emociones es fundamental para el bienestar psicológico. A continuación, exploramos conceptos clave del psicoanálisis de Carl Jung y Erich Fromm.</p>
+        <h2>Carl Jung</h2>
+        <p>Carl Jung introdujo conceptos como el inconsciente colectivo y los arquetipos, que son patrones universales de comportamiento. Según Jung, entender estos arquetipos puede ayudarnos a comprender mejor nuestras emociones y comportamientos.</p>
+        <h2>Erich Fromm</h2>
+        <p>Erich Fromm, por su parte, se centró en el psicoanálisis humanista, destacando la importancia del amor y la libertad en el desarrollo personal. Fromm creía que el amor verdadero implica cuidado, responsabilidad, respeto y conocimiento.</p>
+        <h3>Conceptos Clave de Fromm</h3>
+        <ul>
+            <li><strong>Amor:</strong> Fromm veía el amor como una habilidad que se puede desarrollar y perfeccionar.</li>
+            <li><strong>Libertad:</strong> La libertad es esencial para el crecimiento personal y la realización.</li>
+            <li><strong>Carácter Social:</strong> Fromm introdujo el concepto de carácter social, que describe cómo la sociedad influye en la personalidad individual.</li>
+        </ul>
+    </div>
+    <div class="sidebar">
+        <h3>Tips para el Manejo de las Emociones</h3>
+        <div class="tip">1. Practica la autoconciencia: Reflexiona sobre tus emociones y lo que las desencadena.</div>
+        <div class="tip">2. Desarrolla la empatía: Intenta entender las emociones de los demás.</div>
+        <div class="tip">3. Mantén una actitud positiva: Enfócate en lo positivo y busca soluciones en lugar de problemas.</div>
+        <div class="tip">4. Aprende a relajarte: Practica técnicas de relajación como la meditación o el yoga.</div>
+        <div class="tip">5. Comunica tus sentimientos: Habla abiertamente sobre tus emociones con personas de confianza.</div>
+        <div class="tip">6. Establece límites: Aprende a decir no y a proteger tu espacio emocional.</div>
+        <div class="tip">7. Busca apoyo: No dudes en pedir ayuda a amigos, familiares o profesionales si lo necesitas.</div>
+        <div class="tip">8. Practica la gratitud: Agradece las cosas buenas de tu vida diariamente.</        <div class="tip">9. Mantén un diario emocional: Escribe sobre tus emociones y experiencias diarias.</div>
+        <div class="tip">10. Desarrolla habilidades de afrontamiento: Encuentra maneras saludables de lidiar con el estrés y la ansiedad.</div>
+    </div>
+</body>
+</html>

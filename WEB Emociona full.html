@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Terapia en Casa</title>
+    <style>
+        /* Estilos Generales */
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        
+        /* Encabezado */
+        header {
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        /* Sidebar izquierdo */
+        .sidebar {
+            background-color: #357abd;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            padding-top: 20px;
+            z-index: 1000;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar ul li {
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            display: block;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background-color: #285a8d;
+        }
+        
+        /* Sidebar derecho (Tips) */
+        .right-side {
+            background-color: #f1f1f1;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .right-side h3 {
+            color: #4a90e2;
+            text-align: center;
+        }
+
+        .right-side ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .right-side ul li a {
+            color: #357abd;
+            text-decoration: none;
+            display: block;
+            padding: 8px;
+            margin: 5px 0;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .right-side ul li a:hover {
+            background-color: #d0d0d0;
+        }
+
+        .tip-content {
+            display: none;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 10px;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-left: 260px;
+            margin-right: 260px;
+            padding: 20px;
+            flex: 1;
+        }
+        
+        /* Secciones */
+        section {
+            display: none;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f4f4f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        /* Carrusel de imágenes */
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .carousel img {
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Botones de control del carrusel */
+        .carousel-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .carousel-button {
+            background-color: #4a90e2;
+            border: none;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-button:hover {
+            background-color: #357abd;
+        }
+
+        /* Estilos para botones de formulario */
+        button, .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover, .btn:hover {
+            background-color: #357abd;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <script>
+        // Función para mostrar la sección seleccionada
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            const navLinks = document.querySelectorAll('.sidebar ul li a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            document.querySelector(`.sidebar ul li a[onclick="showSection('${sectionId}')"]`).classList.add('active');
+        }
+
+        // Configuración del carrusel de imágenes
+        let currentSlide = 0;
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel img');
+            slides.forEach(slide => slide.style.transform = `translateX(-${index * 100}%)`);
+        }
+        
+        function nextSlide() {
+            const slides = document.querySelectorAll('.carousel img');
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            const slides = document.querySelectorAll('.carousel img');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Mostrar contenido de tip seleccionado
+        function showTip(tipId) {
+            const tips = document.querySelectorAll('.tip-content');
+            tips.forEach(tip => tip.style.display = 'none');
+            document.getElementById(tipId).style.display = 'block';
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            showSection('inicio');
+            setInterval(nextSlide, 3000);  // Cambia de imagen automáticamente cada 3 segundos
+        });
+    </script>
+</head>
+<body>
+
+    <!-- Sidebar de Navegación -->
+    <div class="sidebar">
+        <ul>
+            <li><a onclick="showSection('inicio')">Inicio</a></li>
+            <li><a onclick="showSection('about')">Sobre Nosotros</a></li>
+            <li><a onclick="showSection('services')">Servicios y Productos</a></li>
+            <li><a onclick="showSection('method')">Método de Trabajo</a></li>
+            <li><a onclick="showSection('contact')">Contacto</a></li>
+        </ul>
+    </div>
+
+    <!-- Right Side (Tips de Emociones) -->
+    <div class="right-side">
+        <h3>Tips de Emociones</h3>
+        <ul>
+            <li><a onclick="showTip('tip1')">¿Cómo manejar la ansiedad?</a></li>
+            <li><a onclick="showTip('tip2')">Aceptación de emociones</a></li>
+            <li><a onclick="showTip('tip3')">Práctica de mindfulness</a></li>
+            <li><a onclick="showTip('tip4')">Construir la resiliencia</a></li>
+        </ul>
+        <!-- Contenido de los Tips -->
+        <div id="tip1" class="tip-content">
+            <h4>¿Cómo manejar la ansiedad?</h4>
+            <p>La ansiedad puede manejarse con técnicas de respiración profunda, actividad física y enfoque en pensamientos positivos.</p>
+        </div>
+        <div id="tip2" class="tip-content">
+            <h4>Aceptación de emociones</h4>
+            <p>Aceptar tus emociones es el primer paso para comprenderlas. Permítete sentir sin juzgarte a ti mismo.</p>
+        </div>
+        <div id="tip3" class="tip-content">
+            <h4>Práctica de mindfulness</h4>
+            <p>La práctica de mindfulness ayuda a mantener la mente en el presente, reduciendo el estrés y aumentando la claridad.</p>
+        </div>
+        <div id="tip4" class="tip-content">
+            <h4>Construir la resiliencia</h4>
+            <p>La resiliencia se fortalece al aprender de los desafíos, mantener una mentalidad positiva y buscar apoyo social.</p>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+
+        <!-- Encabezado -->
+        <header>
+            <h1>Web Terapia en Casa</h1>
+        </header>
+
+        <!-- Sección Inicio -->
+        <section id="inicio" class="active">
+            <h2>Bienvenidos a un espacio donde cada emoción cuenta</h2>
+            <div class="carousel">
+                <img src="images/slide1.jpg" alt="Imagen 1">
+                <img src="images/slide2.jpg" alt="Imagen 2">
+                <img src="images/slide3.jpg" alt="Imagen 3">
+                <img src="images/slide4.jpg" alt="Imagen 4">
+                <img src="images/slide5.jpg" alt="Imagen 5">
+                <img src="images/slide6.jpg" alt="Imagen 6">
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button" onclick="prevSlide()">&#10094; Anterior</button>
+                <button class="carousel-button" onclick="nextSlide()">Siguiente &#10095;</button>
+            </div>
+            <p>La vida moderna trae consigo desafíos constantes. Muchas veces nos encontramos atrapados entre lo que esperamos de nosotros mismos y la realidad de nuestros sentimientos...</p>
+        </section>
+
+        <!-- Sección Sobre Nosotros -->
+        <section id="about">
+            <h2>Sobre Nosotros</h2>
+            <p>¿Buscas una forma más cómoda y flexible de cuidar tu salud mental? <strong>Terapia en Casa</strong> es la solución que necesitas.</p>
+            <ul>
+                <li><strong>Gestionar el estrés y la ansiedad:</strong> Te brindamos técnicas personalizadas...</li>
+                <li><strong>Mejorar tus relaciones:</strong> Te apoyamos en el desarrollo de habilidades...</li>
+                <li><strong>Superar traumas y pérdidas:</strong> Procesar y sanar traumas...</li>
+            </ul>
+        </section>
+
+        <!-- Sección Servicios y Productos -->
+        <section id="services">
+            <h2>Servicios y Productos</h2>
+            <h3>Terapia Individual</h3>
+            <p>La terapia individual es un espacio solo para ti...</p>
+            <h3>Kit de Herramientas Emocionales</h3>
+            <p>Este kit incluye un diario, calendario emocional...</p>
+        </section>
+
+        <!-- Sección Método de Trabajo -->
+        <section id="method">
+            <h2>Nuestro Método de Trabajo</h2>
+            <ul>
+                <li><strong>Evaluación inicial:</strong> Comenzamos con una sesión de evaluación...</li>
+                <li><strong>Plan de tratamiento personalizado:</strong> Creado específicamente para ti...</li>
+                <li><strong>Sesiones regulares:</strong> Exploramos juntos tus emociones...</li>
+            </ul>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contact" style="text-align: center;">
+            <h2>Contacto</h2>
+            <form action="mailto:terapiaencasa@gmail.com" method="post" enctype="text/plain" style="display: inline-block; text-align: left;">
+                <label for="name">Nombre:</label><br>
+                <input type="text" id="name" name="name" required style="width: 100%; margin-bottom: 10px;"><br>
+                
+                <label for="email">Correo Electrónico:</label><br>
+                <input type="email" id="email" name="email" required style="width: 100%; margin-bottom: 10px;"><br>
+                
+                <label for="message">Mensaje:</label><br>
+                <textarea id="message" name="message" rows="4" required style="width: 100%; margin-bottom: 10px;"></textarea><br>
+                
+                <button type="submit" style="width: 100%;">Enviar</button>
+            </form>
+            <p style="margin-top: 20px;">Teléfono: 3166423899</p>
+        </section>
+        
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Web Terapia en Casa</p>
+    </footer>
+
+</body>
+</html>
+
